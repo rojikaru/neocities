@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate && mv .output/public/404.html .output/public/not_found.html",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
