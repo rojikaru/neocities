@@ -32,12 +32,12 @@ jobs:
         
       - name: Install dependencies and build site
         run: |
-          pnpm install --prefer-offline --no-frozen-lockfile
-          pnpm run build
+          pnpm install --prefer-offline --frozen-lockfile
+          pnpm run generate
         
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@master
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
           cleanup: false
-          dist_dir: dist
+          dist_dir: .output/public
