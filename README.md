@@ -1,75 +1,15 @@
-# Nuxt Minimal Starter
+# My Neocities Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+I used Nuxt to create this website, which is hosted on [Neocities](https://rojikaru.neocities.org/).
 
-## Setup
+I will update occasionally (whenever I feel like it) and poke around with SSG and Vue (because I'm a React fella and a total Vue noob), so stay tuned!
 
-Make sure to install dependencies:
+## Development
+To run the development server, use:
 
 ```bash
-# npm
-npm install
-
-# pnpm
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+pnpm run dev
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+or any other server-side JavaScript package manager of your choice.
