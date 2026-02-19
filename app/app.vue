@@ -8,10 +8,7 @@ useHead({
     {
       name: "description",
       content: `Rojikaru's personal website, a cool crib 
-      where I will have some fun with web development and 
-      share some of my projects and thoughts. 
-      I'll also have a blog where I'll write about 
-      my experiences and thoughts on various topics.`,
+      where I share some of my projects and thoughts.`,
     },
     {
       name: "viewport",
