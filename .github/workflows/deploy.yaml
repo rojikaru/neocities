@@ -2,7 +2,6 @@ name: Deploy to Neocities
 
 env:
   FORCE_COLOR: 1
-  NODE_VERSION: lts/* # this will use the latest LTS version of Node.js
 
 concurrency:
   group: deploy-to-neocities
@@ -21,23 +20,25 @@ jobs:
       - name: Checkout the repository code
         uses: actions/checkout@v4
         
-      - name: Install pnpm & Node.js
-        uses: pnpm/action-setup@v4
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache bun dependencies
+        uses: actions/cache@v4
         with:
-            run_install: false
-      - uses: actions/setup-node@v4
-        with:
-            node-version: ${{ env.NODE_VERSION }}
-            cache: 'pnpm'
-        
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - name: Install dependencies and build site
         run: |
-          pnpm install --prefer-offline --frozen-lockfile
-          pnpm run generate
+          bun install --prefer-offline --frozen-lockfile
+          bun run generate
         
       - name: Deploy to Neocities
         uses: bcomnes/deploy-to-neocities@master
         with:
           api_key: ${{ secrets.NEOCITIES_API_TOKEN }}
-          cleanup: false
+          cleanup: true
           dist_dir: .output/public
