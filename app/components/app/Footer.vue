@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { neocities } from "@/constants/neighbors/neocities";
+import { neocities } from "~/constants/neighbors/neocities";
 
 const creationYear = 2025;
 const currentYear = ref(new Date().getFullYear());

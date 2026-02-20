@@ -7,8 +7,8 @@ useHead({
   meta: [
     {
       name: "description",
-      content: `Rojikaru's personal website, a cool crib 
-      where I share some of my projects and thoughts.`,
+      content:
+        "Rojikaru's personal website, a cool crib where I share some of my projects and thoughts.",
     },
     {
       name: "viewport",

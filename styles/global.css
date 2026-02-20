@@ -5,7 +5,7 @@
     --color-foreground: #000000;
     --color-annotation: #4f4f4f;
 
-    --font-default: 'JetBrains Mono', sans-serif;
+    --font-default: 'JetBrains Mono', monospace;
 }
 
 .dark {

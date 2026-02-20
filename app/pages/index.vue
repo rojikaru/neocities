@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { banners } from "@/constants/banners";
+import { banners } from "~/constants/banners";
 
 useHead({
   title: "Home",

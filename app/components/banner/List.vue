@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Banner } from "@/types/banner";
-import type { Neighbor } from "@/types/neighbor";
+import type { Banner } from "~/types/banner";
+import type { Neighbor } from "~/types/neighbor";
 import { defaultHeightPixels } from "~/constants/banners";
 
 const { banners, heightPixels = defaultHeightPixels } = defineProps<{
@@ -11,7 +11,7 @@ const { banners, heightPixels = defaultHeightPixels } = defineProps<{
 
 <template>
   <ul class="list-none flex flex-row flex-wrap justify-between gap-4">
-    <li v-for="(banner, index) in banners" :key="index">
+    <li v-for="banner in banners" :key="banner.id">
       <BannerSingle :content="banner" :height-pixels="heightPixels" />
     </li>
   </ul>
