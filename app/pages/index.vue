@@ -1,15 +1,19 @@
 <script setup lang="ts">
+import { banners } from "@/constants/banners";
+
 useHead({
-  title: "Home"
+  title: "Home",
 });
 </script>
 
 <template>
-    <main class="mx-auto max-w-4xl p-4">
-        <h1 class="text-2xl font-bold leading-loose">Rojikaru crib</h1>
-        <p>
-            Hello, world!
-            One day, I will be a website of that lazy dude who never updates it.
-        </p>
-    </main>
+  <article>
+    <h1 class="text-2xl font-bold leading-loose">Rojikaru's crib</h1>
+    <p>
+      Hello, world! I am under heavy construction rn, and this page is an
+      experiment.
+    </p>
+    <p class="mb-4">My banners:</p>
+    <BannerList :banners="banners" :height-pixels="31" />
+  </article>
 </template>
