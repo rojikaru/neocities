@@ -21,6 +21,7 @@
     "caniuse-lite": "^1.0.30001770",
     "eslint": "^10.0.0",
     "nuxt": "^4.3.1",
+    "nuxt-svgo": "^4.2.6",
     "serve": "^14.2.5",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.0",

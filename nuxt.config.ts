@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: {
@@ -10,8 +9,19 @@ export default defineNuxtConfig({
     preset: "static",
   },
 
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls: {
+          includeAbsolute: true,
+        },
+      },
+    },
+  },
+
   modules: [
     "@tailwindcss/vite",
+    "nuxt-svgo",
     "@nuxt/eslint",
     "@nuxt/image",
     "@nuxt/ui",
