@@ -1,6 +1,8 @@
 <script setup lang="ts">
+const title = "Rojikaru's Crib";
+
 useHead({
-  titleTemplate: (chunk) => (chunk ? `${chunk} - rojikaru` : "Rojikaru's Crib"),
+  titleTemplate: (chunk) => (chunk ? `${chunk} - ${title}` : title),
   htmlAttrs: {
     lang: "en",
   },
@@ -8,7 +10,7 @@ useHead({
     {
       name: "description",
       content:
-        "Rojikaru's personal website, a cool crib where I share some of my projects and thoughts.",
+        "Rojikaru's personal website, where I share some of my projects and thoughts.",
     },
     {
       name: "viewport",
