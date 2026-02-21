@@ -1,6 +1,16 @@
 import type { Banner } from "~/types/banner";
 
-export const defaultHeightPixels = 48;
+export const amatsuki: Banner = {
+  id: 'amatsuki',
+  name: "Amatsuki",
+  img: "/banners/amatsuki.gif",
+};
+
+export const animeBlink: Banner = {
+  id: 'anime-blink',
+  name: "Anime Blink",
+  img: "/banners/anime-blink.gif",
+};
 
 export const animeNow: Banner = {
   id: 'anime-now',
@@ -56,7 +66,27 @@ export const prettyBoysClub: Banner = {
   img: "/banners/pretty-boys-club.png",
 };
 
+export const privacy: Banner = {
+  id: 'privacy',
+  name: "Internet privacy, now!",
+  img: "/banners/privacy.gif",
+};
+
+export const sayNoToWeb3: Banner = {
+  id: 'say-no-to-web3',
+  name: "Say No to Web3",
+  img: "/banners/say-no-to-web3.gif",
+};
+
+export const webDesign: Banner = {
+  id: 'web-design',
+  name: "Web Design is my Passion",
+  img: "/banners/web-design.gif",
+};
+
 export const banners = [
+  amatsuki,
+  animeBlink,
   animeNow,
   anyBrowser,
   visitMyGuestbook,
@@ -66,4 +96,7 @@ export const banners = [
   nekoscape,
   oldCastle,
   prettyBoysClub,
+  privacy,
+  sayNoToWeb3,
+  webDesign,
 ] as const satisfies Banner[];
