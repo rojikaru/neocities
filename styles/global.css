@@ -5,7 +5,7 @@
     --color-foreground: #000000;
     --color-annotation: #4f4f4f;
 
-    --font-default: 'JetBrains Mono', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 .dark {
@@ -17,5 +17,5 @@
 body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: var(--font-default);
+    font-family: var(--font-mono);
 }

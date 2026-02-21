@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { defaultHeightPixels } from "~/constants/banners";
 import type { Banner } from "~/types/banner";
 import type { Neighbor } from "~/types/neighbor";
 
-const { content, heightPixels = defaultHeightPixels } = defineProps<{
+export interface SingleBannerProps {
   content: Banner | Neighbor;
-  heightPixels?: number;
-}>();
+  heightPixels: number;
+  widthPixels?: number | null;
+}
 
-const isNeighbor = (content: Banner): content is Neighbor => {
-  return "link" in content && "name" in content;
-};
+const {
+  content,
+  heightPixels,
+  widthPixels = null,
+} = defineProps<SingleBannerProps>();
+
+const isNeighbor = (content: Banner): content is Neighbor => 
+  "link" in content;
 
 const elementType = computed(() => (isNeighbor(content) ? "a" : "div"));
 const elementProps = computed(() => {
@@ -20,7 +25,7 @@ const elementProps = computed(() => {
   return {
     href: content.link,
     target: "_blank",
-    rel: "noopener noreferrer"
+    rel: "noopener noreferrer",
   };
 });
 </script>
@@ -35,8 +40,12 @@ const elementProps = computed(() => {
     <img
       :src="content.img"
       :alt="content.name"
+      :width="widthPixels ?? undefined"
       :height="heightPixels"
-      :style="{ height: `${heightPixels}px` }"
+      :style="{
+        height: `${heightPixels}px`,
+        width: widthPixels ? `${widthPixels}px` : undefined,
+      }"
     >
   </component>
 </template>
