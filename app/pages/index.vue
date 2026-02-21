@@ -14,6 +14,6 @@ useHead({
       experiment.
     </p>
     <p class="mb-4">My banners:</p>
-    <BannerList :banners="banners" :height-pixels="31" />
+    <BannerList :banners="banners" :width-pixels="88" :height-pixels="31" />
   </article>
 </template>
