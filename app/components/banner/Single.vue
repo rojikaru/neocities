@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Banner } from "~/types/banner";
-import type { Neighbor } from "~/types/neighbor";
+import { type Neighbor, isNeighbor } from "~/types/neighbor";
 
 export interface SingleBannerProps {
   content: Banner | Neighbor;
@@ -13,9 +13,6 @@ const {
   heightPixels,
   widthPixels = null,
 } = defineProps<SingleBannerProps>();
-
-const isNeighbor = (content: Banner): content is Neighbor => 
-  "link" in content;
 
 const elementType = computed(() => (isNeighbor(content) ? "a" : "div"));
 const elementProps = computed(() => {

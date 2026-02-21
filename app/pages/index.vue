@@ -8,7 +8,7 @@ useHead({
 
 <template>
   <article>
-    <h1 class="text-2xl font-bold leading-loose">Rojikaru's crib</h1>
+    <h1>Rojikaru's crib</h1>
     <p>
       Hello, world! I am under heavy construction rn, and this page is an
       experiment.
