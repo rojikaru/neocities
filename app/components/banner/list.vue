@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Banner } from "~/types/banner";
 import type { Neighbor } from "~/types/neighbor";
-import type { SingleBannerProps } from "./Single.vue";
+import type { SingleBannerProps } from "./single.vue";
 
 type BannerListProps = Omit<SingleBannerProps, "content"> & {
   banners: Array<Banner | Neighbor>;
@@ -15,7 +15,7 @@ const {
 </script>
 
 <template>
-  <ul class="list-none flex flex-row flex-wrap justify-between gap-4">
+  <ul class="flex flex-row flex-wrap justify-evenly content-start gap-3 leading-none">
     <li v-for="banner in banners" :key="banner.id">
       <BannerSingle
         :content="banner"

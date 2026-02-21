@@ -32,7 +32,7 @@ const elementProps = computed(() => {
     :is="elementType"
     :aria-label="content.name"
     v-bind="elementProps"
-    class="inline-block"
+    class="block"
   >
     <img
       :src="content.img"
