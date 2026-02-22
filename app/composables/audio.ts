@@ -6,12 +6,16 @@ import type { MaybeArray } from "~/types/utils";
  * It provides play and pause functionality,
  * and automatically updates the audio source when the src prop changes.
  * @param src The source URL of the audio file to play. Can be a string or a ref to a string.
+ * @param defaults Optional default settings for the audio element, such as volume and loop.
  * @returns An object containing the isPlaying state, and play and pause functions.
  */
-export const useAudio = (src: MaybeRef<MaybeArray<string>>) => {
-  const audios = computed(() => {
+export const useAudio = (
+  src: MaybeRef<MaybeArray<string>>,
+  defaults?: Pick<HTMLAudioElement, "volume" | "loop">,
+) => {
+  const audios = computed((): string[] => {
     const srcValue = toValue(src);
-    return Array.isArray(srcValue) ? srcValue : [srcValue];
+    return Array.isArray(srcValue) ? srcValue : [srcValue as string];
   });
 
   const audio = ref<HTMLAudioElement | null>(null);
@@ -59,6 +63,12 @@ export const useAudio = (src: MaybeRef<MaybeArray<string>>) => {
     }
   };
 
+  const setVolume = (level: number) => {
+    if (audio.value && level >= 0 && level <= 1) {
+      audio.value.volume = level;
+    }
+  };
+
   watch(audios, (newAudios) => {
     if (!newAudios.includes(currentTrack.value!)) {
       currentTrackIndex.value = 0;
@@ -78,6 +88,9 @@ export const useAudio = (src: MaybeRef<MaybeArray<string>>) => {
 
   onMounted(() => {
     audio.value = new Audio(currentTrack.value);
+    audio.value.volume = defaults?.volume ?? 0.5;
+    audio.value.loop = defaults?.loop ?? true;
+
     audio.value.addEventListener("ended", nextTrack);
     audio.value.addEventListener("play", setPlaying);
     audio.value.addEventListener("pause", setPaused);
@@ -85,6 +98,7 @@ export const useAudio = (src: MaybeRef<MaybeArray<string>>) => {
 
   onUnmounted(() => {
     audio.value?.pause();
+
     audio.value?.removeEventListener("ended", nextTrack);
     audio.value?.removeEventListener("play", setPlaying);
     audio.value?.removeEventListener("pause", setPaused);
@@ -97,5 +111,6 @@ export const useAudio = (src: MaybeRef<MaybeArray<string>>) => {
     toggle,
     prevTrack,
     nextTrack,
+    setVolume,
   };
 };

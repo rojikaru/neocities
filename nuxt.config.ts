@@ -28,7 +28,7 @@ export default defineNuxtConfig({
     "@nuxt/fonts",
   ],
 
-  css: ["~~/styles/global.css"],
+  css: ["~/assets/css/global.css"],
 
   routeRules: {
     "/_nuxt/**": {

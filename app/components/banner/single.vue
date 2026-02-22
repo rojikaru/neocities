@@ -34,15 +34,11 @@ const elementProps = computed(() => {
     v-bind="elementProps"
     class="block"
   >
-    <img
+    <NuxtImg
       :src="content.img"
       :alt="content.name"
       :width="widthPixels ?? undefined"
       :height="heightPixels"
-      :style="{
-        height: `${heightPixels}px`,
-        width: widthPixels ? `${widthPixels}px` : undefined,
-      }"
-    >
+    />
   </component>
 </template>
