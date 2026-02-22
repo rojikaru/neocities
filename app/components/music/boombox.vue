@@ -8,8 +8,14 @@ const { src } = defineProps<{
 }>();
 
 const isMultipleTracks = computed(() => Array.isArray(src) && src.length > 1);
+const volume = ref(0.5);
 
-const { isPlaying, toggle, nextTrack, prevTrack } = useAudio(src);
+const { isPlaying, toggle, nextTrack, prevTrack, setVolume } = useAudio(
+  src,
+  { volume: toValue(volume.value), loop: true },
+);
+
+watch(volume, setVolume);
 </script>
 
 <template>
@@ -29,6 +35,7 @@ const { isPlaying, toggle, nextTrack, prevTrack } = useAudio(src);
       >
         ⏮
       </button>
+      <USlider v-model="volume" :step="0.01" :min="0" :max="1" />
       <button
         aria-label="Next track"
         class="text-4xl hover:not-disabled:text-blue-400 scale-x-150 translate-x-2"

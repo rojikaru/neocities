@@ -15,13 +15,19 @@ const {
 </script>
 
 <template>
-  <ul class="flex flex-row flex-wrap justify-evenly content-start gap-3 leading-none">
-    <li v-for="banner in banners" :key="banner.id">
+  <UMarquee
+    :ui="{
+      root: '[--gap:--spacing(3)] ',
+    }"
+  >
+    <ul class="flex flex-row flex-nowrap gap-3">
+      <li v-for="banner in banners" :key="banner.id" class="shrink-0">
       <BannerSingle
         :content="banner"
         :width-pixels="widthPixels"
         :height-pixels="heightPixels"
       />
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </UMarquee>
 </template>
