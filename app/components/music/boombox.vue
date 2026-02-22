@@ -8,19 +8,15 @@ const { src } = defineProps<{
 }>();
 
 const isMultipleTracks = computed(() => Array.isArray(src) && src.length > 1);
-const volume = ref(0.5);
-
-const { isPlaying, toggle, nextTrack, prevTrack, setVolume } = useAudio(
-  src,
-  { volume: toValue(volume.value), loop: true },
-);
-
-watch(volume, setVolume);
+const { volume, isPlaying, toggle, nextTrack, prevTrack} = useAudio(src, {
+  volume: 0.5,
+  loop: true,
+});
 </script>
 
 <template>
   <section class="boombox inline-block">
-    <button @click="toggle()">
+    <button :aria-label="isPlaying ? 'Pause' : 'Play'" @click="toggle()">
       <BoomboxIcon v-if="!isPlaying" class="w-32! h-32! hover:text-lime-400" />
       <BoomboxIconAnimated v-else class="w-32! h-32! hover:text-red-400" />
     </button>

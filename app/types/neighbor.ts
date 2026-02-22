@@ -11,5 +11,5 @@ export interface Neighbor extends Banner {
   link: string;
 }
 
-export const isNeighbor = (content: Banner): content is Neighbor => 
+export const isNeighbor = (content: Banner): content is Neighbor =>
   "link" in content;

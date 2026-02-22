@@ -6,12 +6,12 @@ import type { MaybeArray } from "~/types/utils";
  * It provides play and pause functionality,
  * and automatically updates the audio source when the src prop changes.
  * @param src The source URL of the audio file to play. Can be a string or a ref to a string.
- * @param defaults Optional default settings for the audio element, such as volume and loop.
+ * @param defaults Default settings for the audio element, such as volume and loop.
  * @returns An object containing the isPlaying state, and play and pause functions.
  */
 export const useAudio = (
   src: MaybeRef<MaybeArray<string>>,
-  defaults?: Pick<HTMLAudioElement, "volume" | "loop">,
+  defaults: Pick<HTMLAudioElement, "volume" | "loop">,
 ) => {
   const audios = computed((): string[] => {
     const srcValue = toValue(src);
@@ -19,11 +19,13 @@ export const useAudio = (
   });
 
   const audio = ref<HTMLAudioElement | null>(null);
+  const volume = ref(defaults.volume);
   const isPlaying = ref(false);
 
   const currentTrackIndex = ref(0);
   const currentTrack = computed(() => audios.value.at(currentTrackIndex.value));
 
+  const syncVolumeRef = () => (volume.value = audio.value?.volume ?? defaults.volume);
   const setPlaying = () => (isPlaying.value = true);
   const setPaused = () => (isPlaying.value = false);
 
@@ -63,11 +65,11 @@ export const useAudio = (
     }
   };
 
-  const setVolume = (level: number) => {
+  watch(volume, (level) => {
     if (audio.value && level >= 0 && level <= 1) {
       audio.value.volume = level;
     }
-  };
+  });
 
   watch(audios, (newAudios) => {
     if (!newAudios.includes(currentTrack.value!)) {
@@ -88,9 +90,10 @@ export const useAudio = (
 
   onMounted(() => {
     audio.value = new Audio(currentTrack.value);
-    audio.value.volume = defaults?.volume ?? 0.5;
-    audio.value.loop = defaults?.loop ?? true;
+    audio.value.volume = defaults.volume;
+    audio.value.loop = defaults.loop;
 
+    audio.value.addEventListener("volumechange", syncVolumeRef);
     audio.value.addEventListener("ended", nextTrack);
     audio.value.addEventListener("play", setPlaying);
     audio.value.addEventListener("pause", setPaused);
@@ -99,18 +102,19 @@ export const useAudio = (
   onUnmounted(() => {
     audio.value?.pause();
 
+    audio.value?.removeEventListener("volumechange", syncVolumeRef);
     audio.value?.removeEventListener("ended", nextTrack);
     audio.value?.removeEventListener("play", setPlaying);
     audio.value?.removeEventListener("pause", setPaused);
   });
 
   return {
+    volume,
     isPlaying,
     play,
     pause,
     toggle,
     prevTrack,
     nextTrack,
-    setVolume,
   };
 };
