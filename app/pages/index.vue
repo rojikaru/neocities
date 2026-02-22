@@ -15,10 +15,10 @@ useHead({
         experiment.
       </p>
 
-      <h2 class="mt-2 mb-1">My banners</h2>
+      <h2>My banners</h2>
       <BannerList :banners="banners" :width-pixels="88" :height-pixels="31" />
 
-      <h2 class="mt-1">Music</h2>
+      <h2>Music</h2>
       <MusicBoombox :src="musicPaths" />
   </article>
 </template>

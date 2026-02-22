@@ -15,7 +15,7 @@ export const useAudio = (
 ) => {
   const audios = computed((): string[] => {
     const srcValue = toValue(src);
-    return Array.isArray(srcValue) ? srcValue : [srcValue as string];
+    return Array.isArray(srcValue) ? srcValue : [srcValue];
   });
 
   const audio = ref<HTMLAudioElement | null>(null);

@@ -30,15 +30,15 @@ watch(volume, setVolume);
     >
       <button
         aria-label="Previous track"
-        class="text-4xl hover:not-disabled:text-blue-400 scale-x-150 -translate-x-2"
+        class="text-xl hover:not-disabled:text-blue-400 scale-x-150 -translate-x-2"
         @click="prevTrack"
       >
         ⏮
       </button>
-      <USlider v-model="volume" :step="0.01" :min="0" :max="1" />
+      <USlider v-model="volume" :step="0.01" :min="0" :max="1" class="w-1/2" />
       <button
         aria-label="Next track"
-        class="text-4xl hover:not-disabled:text-blue-400 scale-x-150 translate-x-2"
+        class="text-xl hover:not-disabled:text-blue-400 scale-x-150 translate-x-2"
         @click="nextTrack"
       >
         ⏭

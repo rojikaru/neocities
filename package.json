@@ -7,7 +7,8 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate && cp .output/public/404.html .output/public/not_found.html",
     "preview": "serve .output/public",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --ext .ts,.vue --ignore-pattern node_modules ."
   },
   "dependencies": {
     "@nuxt/eslint": "^1.15.1",

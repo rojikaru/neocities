@@ -1,1 +1,1 @@
-export type MaybeArray<T> = T | readonly [T, ...T[]];
+export type MaybeArray<T> = T | T[];

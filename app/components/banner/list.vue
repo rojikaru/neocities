@@ -17,17 +17,15 @@ const {
 <template>
   <UMarquee
     :ui="{
-      root: '[--gap:--spacing(3)] ',
+      root: '[--gap:--spacing(3)] mb-4',
     }"
   >
-    <ul class="flex flex-row flex-nowrap gap-3">
-      <li v-for="banner in banners" :key="banner.id" class="shrink-0">
+    <div v-for="banner in banners" :key="banner.id" class="shrink-0">
       <BannerSingle
         :content="banner"
         :width-pixels="widthPixels"
         :height-pixels="heightPixels"
       />
-      </li>
-    </ul>
+    </div>
   </UMarquee>
 </template>
