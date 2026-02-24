@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { banners } from "~/constants/banners";
 import { musicPaths } from "~/constants/music";
-
-useHead({
-  title: "Home",
-});
 </script>
 
 <template>

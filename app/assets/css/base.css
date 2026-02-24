@@ -27,6 +27,7 @@
 
   h1 {
     font-size: var(--text-3xl);
+    margin-block-end: calc(var(--spacing) * 3);
   }
 
   h2 {
